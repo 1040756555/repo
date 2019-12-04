@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin implements Serializable{
+public class Emp implements Serializable{
 
-	private Integer admin_id;
-	private String accounts;
-	private String password;
-	private String admin_remark;
+	private Integer id;
+	private String name;
+	private String tel;
+	private String qq;
 }

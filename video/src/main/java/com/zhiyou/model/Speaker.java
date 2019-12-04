@@ -1,5 +1,7 @@
 package com.zhiyou.model;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Speaker {
+public class Speaker implements Serializable{
 
 	private Integer id;
 	private String speaker_name;

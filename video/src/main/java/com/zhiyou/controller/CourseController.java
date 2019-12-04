@@ -34,6 +34,7 @@ public class CourseController {
 
 	@RequestMapping("addCourse")
 	public String addCourse(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("1012131--");
 		List<Subject> subjectList = service.selectAllSubject();
 		req.setAttribute("subjectList", subjectList);
 		return "backstage/course/add";
@@ -44,6 +45,8 @@ public class CourseController {
 			throws UnsupportedEncodingException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset= UTF-8");
+		
+		System.out.println("1012131--2");
 		service.addCourse(course);
 		return "redirect:showCourse";
 	}

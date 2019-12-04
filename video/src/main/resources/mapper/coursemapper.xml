@@ -14,39 +14,58 @@
     <result column="subject_name" property="subject_name"/>
   </resultMap>
   
+  <!-- 查询全部的 Course并且分页-->
   <select id="selectAllCourse" resultType="course">
     select * from course limit #{0},#{1};
   </select>
   
+  <!--查询全部的 Course的数量	  -->
   <select id="selectCourseCounts" resultType="int">
     select count(*) from course ;
   </select>
   
+  <!-- 查询全部的课程 -->
   <select id="selectAllSubject" resultType="subject">
     select * from subject ;
   </select>
   
+    <!-- 对course进行增加 -->
    <insert id="addCourse" parameterType="course">
     insert into course values(#{id},#{course_title},#{course_desc},#{subject_id});
   </insert>
   
+  <!-- 删除的全部 -->
   <delete id="deleteAll">
-    delete from user where id in #{123};
+    delete from course where id in
+			<foreach open="(" collection="array" item="id" index="i" separator="," close=")">
+				#{id}	
+			</foreach>
   </delete>
   
+  <!-- 这是单个删除 -->
+  <delete id="deleteCourse">
+     delete from course where id =#{s1}
+  </delete>
+  
+  <!-- 对course进行更编辑  -->
   <update id="updateCourse" parameterType="course">
-    update user
+    update course
       <set>
+       <if test="id!=0">
+          id=#{id},
+        </if>
         <if test="course_title!=null">
           name=#{name},
         </if>
         <if test="course_desc!=null">
-          age=#{age},
+          course_desc=#{course_desc},
         </if>
         <if test="subject_id!=0">
-          sex=#{sex}
-        </if>
+          subject_id=#{subject_id}
+        </if>       
       </set>
     where id=#{id}
   </update>
+  
+ 
 </mapper>
