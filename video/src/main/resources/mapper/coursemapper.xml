@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyou.mapper.CourseMapper">
+  <resultMap type="course" id="courseMap">
+    <id column="id" property="id"/>
+    <result column="course_title" property="course_title"/>
+    <result column="course_desc" property="course_desc"/>
+    <result column="subject_id" property="subject_id"/>
+  </resultMap>
+  <resultMap type="subject" id="subjectMap">
+    <id column="subject_id" property="subject_id"/>
+    <result column="subject_name" property="subject_name"/>
+  </resultMap>
+  
+  <select id="selectAllCourse" resultType="course">
+    select * from course limit #{0},#{1};
+  </select>
+  
+  <select id="selectCourseCounts" resultType="int">
+    select count(*) from course ;
+  </select>
+  
+  <select id="selectAllSubject" resultType="subject">
+    select * from subject ;
+  </select>
+  
+   <insert id="addCourse" parameterType="course">
+    insert into course values(#{id},#{course_title},#{course_desc},#{subject_id});
+  </insert>
+  
+  <delete id="deleteAll">
+    delete from user where id in #{123};
+  </delete>
+  
+  <update id="updateCourse" parameterType="course">
+    update user
+      <set>
+        <if test="course_title!=null">
+          name=#{name},
+        </if>
+        <if test="course_desc!=null">
+          age=#{age},
+        </if>
+        <if test="subject_id!=0">
+          sex=#{sex}
+        </if>
+      </set>
+    where id=#{id}
+  </update>
+</mapper>
