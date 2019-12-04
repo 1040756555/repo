@@ -13,7 +13,6 @@
 
 <!--<base href="http://localhost:8080/Voids/">-->
 <base href=".">
-<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 <title>智游教育</title>
 
 <link href="/js/bootstrap.css" rel="stylesheet">
@@ -35,7 +34,6 @@ b {
 <body>
 	<nav class="navbar-inverse">
 	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<a class="navbar-brand">视频管理系统</a>
 		</div>
@@ -67,17 +65,6 @@ b {
 				<div class="col-sm-10">
 					<select name="subjectID" id="subjectId" class="form-control">
 						<option value="0">请选择所属学科</option>
-						<option value="0">WEB前端</option>
-						<option value="1">Java</option>
-						<option value="0">Android</option>
-						<option value="0">IOS</option>
-						<option value="0">大数据</option>
-						<option value="0">UI</option>
-						<option value="0">VR</option>
-						<option value="0">U3D</option>
-						<option value="0">人工智能</option>
-						<option value="0">Python</option>
-						<option value="0">PHP</option>
 					</select>
 				</div>
 			</div>
@@ -102,7 +89,6 @@ b {
 			</div>
 		</form>
 	</div>
-	<!-- å¦æIEçæ¬å°äº9ï¼å è½½ä»¥ä¸js,è§£å³ä½çæ¬å¼å®¹é®é¢ -->
 	<!--[if lt IE 9]>
 <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
