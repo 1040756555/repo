@@ -16,64 +16,42 @@ public class UserServiceImpl implements UserService{
 	UserMapper mapper;
 
 	@Override
-	public void add(User nickname) {
+	public void add(User user) {
 		// TODO Auto-generated method stub
-		
+		mapper.add(user);
 	}
 
 	@Override
-	public void update(User nickname) {
+	public void update(User user) {
 		// TODO Auto-generated method stub
-		
+		mapper.update(user);
 	}
 
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		
+		mapper.delete(id);
 	}
 
 	@Override
 	public List<User> selectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectAll();
 	}
 
-	@Override
-	public User selectByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 	@Override
 	public User selectByLogin(String accounts, String password) {
 		// TODO Auto-generated method stub
 		return mapper.selectByLogin(accounts, password);
 	}
-	
-//	public void add(User nickname) {
-//		mapper.add(nickname);
-//	}
-//
-//	public void update(User nickname) {
-//		mapper.update(nickname);
-//	}
-//
-//	public void delete(int id) {
-//		mapper.delete(id);
-//	}
-//
-//	public List<User> selectAll() {
-//		// TODO Auto-generated method stub
-//		return mapper.selectAll();
-//	}
-//
-//	public User selectByID(int id) {
-//		// TODO Auto-generated method stub
-//		return mapper.selectByID(id);
-//	}
 
+	@Override
+	public void deleteAll(int[] ids) {
+		// TODO Auto-generated method stub
+		mapper.deleteAll(ids);
+	}
+
+	
 	
 
 }

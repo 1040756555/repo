@@ -7,13 +7,21 @@ import com.zhiyou.model.User;
 public interface UserService {
 
 	 //方法名保持与对应mapper中的id保持一致
-		void add(User nickname);
-		//参数与mapper中的parameterType保持一致
-		void update(User nickname);
+	//参数与mapper中的parameterType保持一致
+	//返回值与mapper中的resultType保持一致
+
+		
+		/*关于个人用户的增删改*/
+		void add(User user);	
+		void update(User user);
 		void delete(int id);
-		//返回值与mapper中的resultType保持一致
+		
+		//查询全部
 		List<User> selectAll();
-		User selectByID(int id);
-		//仅适用于登陆
+		
+		//仅用于登录
 		User selectByLogin(String accounts,String password);
+		
+		//这是批量删除
+		void deleteAll(int [] ids);   
 }

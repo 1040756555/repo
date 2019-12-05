@@ -3,9 +3,9 @@ package com.zhiyou.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zhiyou.model.User;
@@ -35,11 +35,11 @@ public class UserController {
 		return "redirect:show";
 	}
 	
-	@RequestMapping("selectByID")
-	public String selectByID(int id,HttpServletRequest req,HttpServletResponse rep) {
-		req.setAttribute("user",service.selectByID(id));
-		return "update";
-	}
+//	@RequestMapping("selectByID")
+//	public String selectByID(int id,HttpServletRequest req,HttpServletResponse rep) {
+//		req.setAttribute("user",service.selectByID(id));
+//		return "update";
+//	}
 	
 	@RequestMapping("update")
 	public String update(User user,HttpServletRequest req,HttpServletResponse rep) {
@@ -47,5 +47,11 @@ public class UserController {
 		return "redirect:show";
 	}
 	
+	@RequestMapping("deleteAll")
+	public String deleteAll(int [] ids,HttpServletRequest req,HttpServletResponse rep) {
+		service.deleteAll(ids);
+		return "redirect:show";
+		
+	}
 	
 }
