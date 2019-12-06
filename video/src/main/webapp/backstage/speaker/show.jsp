@@ -34,8 +34,8 @@ th {
 			id="bs-example-navbar-collapse-9">
 			<ul class="nav navbar-nav">
 				<li><a>视频管理</a></li>
-				<li><a href="speakerShow">主讲人管理</a></li>
-				<li class="active"><a>课程管理</a></li>
+				<li class="active"><a>主讲人管理</a></li>
+				<li><a href="showCourse">课程管理</a></li>
 			</ul>
 			<p class="navbar-text navbar-right">
 				<span>${admin.accounts }</span> <i class="glyphicon glyphicon-log-in"

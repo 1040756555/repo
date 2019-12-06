@@ -8,5 +8,6 @@
 		<typeAlias type="com.zhiyou.model.Admin" alias="admin"/>
 		<typeAlias type="com.zhiyou.model.Subject" alias="subject"/>
 		<typeAlias type="com.zhiyou.model.Emp" alias="emp"/>
+		<typeAlias type="com.zhiyou.model.User" alias="user"/>
 	</typeAliases>
 </configuration>

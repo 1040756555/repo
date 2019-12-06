@@ -2,26 +2,23 @@ package com.zhiyou.filter;
 
 import java.io.IOException;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet Filter implementation class filter
+ * Servlet Filter implementation class Filter
  */
-@WebFilter("/filter")
-public class filter implements Filter {
+public class Filter implements javax.servlet.Filter {
 
 	/**
 	 * Default constructor. 
 	 */
-	public filter() {
+	public Filter() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -17,6 +17,12 @@ public interface CourseService {
 
 	void deleteAll(int[] ids);
 
+	// 查询单个Course
+	Course selectById(int id);
+
 	// 查询视频总条数
 	int selectCourseCounts();
+
+	// 删除单条
+	void deleteById(int id);
 }
