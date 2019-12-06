@@ -28,6 +28,10 @@
   <select id="selectAllSubject" resultType="subject">
     select * from subject ;
   </select>
+  <!-- 查询单个的course -->
+  <select id="selectById" resultMap="courseMap">
+    select * from course where id=#{123} ;
+  </select>
   
     <!-- 对course进行增加 -->
    <insert id="addCourse" parameterType="course">
@@ -43,7 +47,7 @@
   </delete>
   
   <!-- 这是单个删除 -->
-  <delete id="deleteCourse">
+  <delete id="deleteById">
      delete from course where id =#{s1}
   </delete>
   
@@ -51,11 +55,8 @@
   <update id="updateCourse" parameterType="course">
     update course
       <set>
-       <if test="id!=0">
-          id=#{id},
-        </if>
         <if test="course_title!=null">
-          name=#{name},
+          course_title=#{course_title},
         </if>
         <if test="course_desc!=null">
           course_desc=#{course_desc},

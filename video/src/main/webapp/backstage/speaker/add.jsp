@@ -2,22 +2,42 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- saved from url=(0055)http://localhost:8080/Voids/Course/Courseupdate.do?id=6 -->
+<!-- saved from url=(0047)http://localhost:8080/Voids/Course/addCourse.do -->
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <!--<base href="http://localhost:8080/Voids/">-->
 <base href=".">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 <title>智游教育</title>
-
 <link href="${pageContext.request.contextPath}/js/bootstrap.css" rel="stylesheet">
-
+<script type="text/javascript">
+		$().ready(function(){
+			$("#infoForm").validate({
+				rules:{
+					course_title:{
+						required:true,
+						minlength:2
+					},
+					course_desc:{
+						required:true,
+						minlength:10
+					}
+				},
+				messages:{
+					course_title:{
+						required:"请输入标题",
+						minlength:"标题长度不能小于2"
+					},
+					course_desc:{
+						required:"请输入简介",
+						minlength:"简介长度不能小于10"
+					}
+				}
+			})
+		})
+	</script>
 <style type="text/css">
 .col-md-1 {
 	padding-top: 20px;
@@ -35,9 +55,11 @@ b {
 <body>
 	<nav class="navbar-inverse">
 	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<a class="navbar-brand">视频管理系统</a>
 		</div>
+
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-9">
 			<ul class="nav navbar-nav">
@@ -50,37 +72,36 @@ b {
 					aria-hidden="true"></i>&nbsp;&nbsp;<a class="navbar-link">退出</a>
 			</p>
 		</div>
-		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid --> </nav>
+	</nav>
 	<div class="jumbotron" style="padding-top: 15px; padding-bottom: 15px;">
 		<div class="container">
-			<h2>修改课程</h2>
+			<h2>添加课程</h2>
 		</div>
 	</div>
 	<div class="container" style="margin-top: 20px;">
-		<form id="infoForm" class="form-horizontal" action="updateCourse.do">
-			<input name="id" value="${course.id }" type="hidden">
+		<form id="infoForm" class="form-horizontal" method="post" action="addCourse.do">
 			<div class="form-group">
 				<label for="subjectId" class="col-sm-2 control-label">所属学科</label>
 				<div class="col-sm-10">
 					<select name="subject_id" id="subject_id" class="form-control">
+						<option value="0" selected="selected">请选择所属学科</option>
 						<c:forEach items="${subjectList }" var="i">
-							<option value="${i.subject_id }" <c:if test="${i.subject_id==course.subject_id }">selected</c:if>>${i.subject_name }</option>
+						<option value="${i.subject_id }">${i.subject_name }</option>
 						</c:forEach>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="subjectTitle" class="col-sm-2 control-label">标题</label>
+				<label for="course_title" class="col-sm-2 control-label">标题</label>
 				<div class="col-sm-10">
-					<input class="form-control" name="course_title" id="course_title" placeholder="${course.course_title }" type="text">
+					<input class="form-control" name="course_title" id="course_title" placeholder="课程标题" type="text">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="courseDesc" class="col-sm-2 control-label">简介</label>
+				<label for="course_desc" class="col-sm-2 control-label">简介</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" id="course_desc" name="course_desc" placeholder="${course.course_desc }" rows="3">${course.course_desc }</textarea>
+					<textarea class="form-control" id="course_desc" name="course_desc" rows="3"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -94,11 +115,12 @@ b {
 <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-	<script src="${pageContext.request.contextPath}/js/jquery-1.js"></script>
+	<script src="${pageContext.request.contextPath}/A/jquery-1.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 	<script src="${pageContext.request.contextPath}/js/confirm.js"></script>
 	<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 	<script src="${pageContext.request.contextPath}/js/message_cn.js"></script>
+
 	<div id="modal-background" class=""></div>
 	<div id="confirm-modal" class="modal fade role=" dialog"=""
 		tabindex="-1">

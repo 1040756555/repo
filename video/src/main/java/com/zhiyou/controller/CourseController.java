@@ -45,19 +45,24 @@ public class CourseController {
 			throws UnsupportedEncodingException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset= UTF-8");
-		
+
 		System.out.println("1012131--2");
 		service.addCourse(course);
 		return "redirect:showCourse";
 	}
 
 	@RequestMapping("updateCourse")
-	public String updateCourse(Course course, HttpServletRequest req, HttpServletResponse resp)
+	public String updateCourse(int id, HttpServletRequest req, HttpServletResponse resp)
 			throws UnsupportedEncodingException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset= UTF-8");
-		service.addCourse(course);
-		return "redirect:showCourse";
+		List<Subject> subjectList = service.selectAllSubject();
+		req.setAttribute("subjectList", subjectList);
+		System.out.println("99999999999999" + id);
+		Course course = service.selectById(id);
+		req.setAttribute("course", course);
+		System.out.println("ddddddddddddddddddd" + course.getId());
+		return "backstage/course/update";
 	}
 
 	@RequestMapping("updateCourse.do")
@@ -65,7 +70,15 @@ public class CourseController {
 			throws UnsupportedEncodingException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset= UTF-8");
-		service.addCourse(course);
+		System.out.println("-----------------" + course.getId());
+		service.updateCourse(course);
+		return "redirect:showCourse";
+	}
+
+	@RequestMapping("deleteById")
+	public String deleteById(int id, HttpServletRequest req, HttpServletResponse resp)
+			throws UnsupportedEncodingException {
+		service.deleteById(id);
 		return "redirect:showCourse";
 	}
 }
