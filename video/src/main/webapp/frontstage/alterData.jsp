@@ -14,7 +14,7 @@
     <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/A/base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/A/profile.css">
-    <link rel="icon" href="http://localhost:8080/Voids/static/z/favicon.png" type="image/png">
+    <link rel="icon" href="${pageContext.request.contextPath}/z/15.jpg" type="image/png">
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
 
 </head>
@@ -30,16 +30,16 @@
 	<menu>
 		<div class="container clearfix">
 			<ul class="clearfix f_left">
-				<li><a>首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
 				
-				<li class="menu_active"><a>个人中心</a></li>
+				<li class="menu_active"><a href="${pageContext.request.contextPath}/frontstage/myCenter.jsp">个人中心</a></li>
 			</ul>
 			
 			<div id="user_bar">
 				<a>					
 						<img id="avatar" src="${pageContext.request.contextPath}/z/avatar_lg.png" alt="" "="">
 				</a>
-				<a>退出</a>
+				<a id="lay_out" href="${pageContext.request.contextPath}/index.jsp">退出</a>
 			</div>
 		</div>
 	</menu>
@@ -50,44 +50,35 @@
             <h2>我的资料</h2>
             <div id="profile_tab">
                 <ul class="profile_tab_header f_left clearfix">
-                    <li><a>更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterData.jsp">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a>更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterPicture.jsp">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a>密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterPassword.jsp">密码安全</a></li>
                 </ul>
-                <div class="proflle_tab_body">
-                    <div class="proflle_tab_workplace clearfix">
-                    
-                        <div class="profile_avatar_area">                           
-                                <img src="http://localhost:8080/Voids/" width="200px;">                         
-                        </div>
-                        
-                        <div class="profile_ifo_area">
-                            <form>
-                                <input name="id" value="21" type="hidden">
-                                
+                <div class="profile_ifo_area">
+                            <form action="updatedata">
+                                <input name="id" value="${user.id}" type="hidden">
                                 <div class="form_group">
-                                    <span class="dd">昵　称：</span><input name="name" type="text" value="">                             
-                                </div>
+                                    <span class="dd">昵　称：</span><input name="nickname" type="text" value="${user.nickname}">
                                 
+                                </div>
                                 <div class="form_group">
                                     <span class="dd">性　别：</span>
-                                   
-                                    <input id="man"  type="radio"><label for="man">男</label>
-                                    <input id="woman" type="radio"><label for="woman">女</label>                                     
+                                     
+                                    <input type="radio" name="sex" value="男" <c:if test="${user.sex=='男'}">checked</c:if>>男
+									<input type="radio" name="sex" value="女" <c:if test="${user.sex=='女'}">checked</c:if>>女
+                                    
                                 </div>
-                                
                                 <div class="form_group">
-                                    <span class="dd">生　日：</span>  <!-- 1990-10-04 -->
-                                    <input name="birthday" type="text" value="">
+                                    <span class="dd">生　日：</span>  
+                                    <input name="birthday" type="text" value="${user.birthday}">
                                 </div>
-                                
                                 <div class="form_group">
                                     <span class="dd">邮　箱：</span>
-                                    <span>1@qq.com</span>
+                                    <input name="accounts" value="${user.accounts}" type="text" readonly="readonly">
+                                    <%-- <span>${user.accounts}</span> --%>
                                 </div>
-                                
                                 <div class="form_group">
                                     <span class="dd">所在地：</span>
                                     <div id="city">
@@ -96,16 +87,13 @@
                                     </div>
                                     <input name="address" id="address" type="hidden">
                                 </div>
-                                
                                 <div class="form_submit dd">
                                     <input onclick="return commitForm();" value="保　存" type="submit">
-                                    <a>重置</a>
+                                    <a href="${pageContext.request.contextPath}/frontstage/alterData.jsp ">重置</a>
                                 </div>
                                 
                             </form>
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
     </main>

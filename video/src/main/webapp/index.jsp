@@ -25,9 +25,9 @@
 	<div class="container">
 		<span>欢迎来到IT培训的黄埔军校——智游教育！</span>
 		
-			<div id="userBlock" style="float:right">
-				<a >退出</a>
-				<a id="login_open">登录  / 注册</a>
+			<div id="userBlock" style="float:right">				
+				<a id="login_open">登录 </a>
+				<a id="reg_open">注册</a>
 			</div>
 		
 		<a onclick="JavaScript:addFavorite2()">
@@ -197,12 +197,12 @@
 			<img src="${pageContext.request.contextPath}/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
-			<form id="loginForm" action="login">
+			<form id="loginForm" action="userlogin">
 				<h3>快速登录</h3>
 				<input id="loginEmail" placeholder="请输入邮箱" name="accounts" type="email">
 				<input id="loginPassword" placeholder="请输入密码" name="password" type="password">
 				<div id="forget">
-					<a href="http://localhost:8080/video/front/user/forgetPassword.action">忘记密码？</a>
+					
 				</div>
 				<input value="登　录" type="submit">
 				<input onclick="return commitLogin()" value="注  册" type="submit" id="reg_open">
@@ -219,7 +219,7 @@
 			<img src="${pageContext.request.contextPath}/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
-			<form id="regForm" action="add">
+			<form id="regForm" action="signin">
 				<h3>新用户注册</h3>
 				<input id="regEmail" placeholder="请输入邮箱" name="email" type="email"><span id="emailMsg"></span>
 				<input id="regPsw" placeholder="请输入密码" name="password" type="password">

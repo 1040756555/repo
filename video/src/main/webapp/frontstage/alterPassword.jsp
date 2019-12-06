@@ -36,19 +36,14 @@
 	<menu>
 		<div class="container clearfix">
 			<ul class="clearfix f_left">
-				<li><a>首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/index2.jsp">首页</a></li>
 				
-				<li class="menu_active"><a ">个人中心</a></li>
+				<li class="menu_active"><a href="${pageContext.request.contextPath}/frontstage/myCenter.jsp">个人中心</a></li>
 			</ul>
 			
 			<div id="user_bar">
-				<a>
-						
-						<img id="avatar" src="${pageContext.request.contextPath}/z/avatar_lg.png" alt="" "="">
-						
-						
-					
-
+				<a>						
+						<img id="avatar" src="${pageContext.request.contextPath}/z/avatar_lg.png" alt="" "="">						
 				</a>
 				<a >退出</a>
 			</div>
@@ -61,40 +56,46 @@
             <h2>我的资料</h2>
             <div id="profile_tab">
                 <ul class="profile_tab_header f_left clearfix">
-                    <li><a >更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterData.jsp">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a>更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterPicture.jsp">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a >密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterPassword.jsp">密码安全</a></li>
                 </ul>
                 <div class="proflle_tab_body">
                     <div class="proflle_tab_workplace clearfix">
                         <div class="profile_avatar_area">
                         
-                           
+                        
 		                         <img id="avatar" width="200px;" src="http://localhost:8080/Voids/" alt="">
-		                      
-		                      
-		                      
+      
                            
                         </div>
-                        <div class="profile_ifo_area">
-                            <form action="" method="post">
+                        <form action="updatepassword" method="get" id="form" onsubmit="return i">
+                            
+                            	<input name="id" value="${user.id}" type="hidden" id="id">
+                            	<input name="nickname" value="${user.nickname}" type="hidden">
+                            	<input name="sex" value="${user.sex}" type="hidden">
+                            	<input name="birthday" value="${user.birthday}" type="hidden">
+                            	<input name="accounts" value="${user.accounts}" type="hidden">
+                            	<input name="address" value="${user.address}" type="hidden"> 
+                         
+                            	
                                 <div class="form_group">
                                     <span class="dd">旧　密　码：</span>
-                                    <input  type="password"><span id="oldMsg"></span>
+                                    <input  type="password" name="passwordbefore" id="password0" onblur="onn0()"><i id="i0"></i>
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">新　密　码：</span>
-                                    <input i type="password">
+                                    <input  type="password" name="password"  id="password1">
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">确认新密码：</span>
-                                    <input  type="password"><span id="passMsg"></span>
+                                    <input  type="password" name="passwordafter" id="password2" onblur="onn()"><i id="i1"></i>
                                 </div>
                                 <div class="form_submit dd">
                                     <input value="保　存" type="submit">
-                                    <a >取消</a>
+                                    <a href="${pageContext.request.contextPath}/alterPassword.jsp ">取消</a>
                                 </div>
                             </form>
                         </div>
@@ -115,7 +116,60 @@
 		</ul>
 	</div>
 </footer>
-
+<script type="text/javascript">
+		var i = false;
+		function onn() {
+			// alert(1);
+			$.ajax({
+				url:"User111",	// 指定请求URL
+				type:"get",		// 指定请求方式	
+				data:{			// 请求附带的参数
+					password1:$("#password1").val(),
+					password2:$("#password2").val()
+				},
+				success:function(data){	// 成功后的回调函数      data代表服务器响应的数据
+					//alert(data);
+					if (data=="false") {
+						$("#i1").text("两次密码输入不一致,请重新输入");
+						i=false; 
+					}else{
+						$("#i1").text("密码一致");
+						i=true; 
+					}
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown){// 失败回调的函数
+					alert(textStatus);	
+				}
+			})
+		}	
+</script>  
+<script type="text/javascript">		
+		var i = false;
+		function onn0() {
+			// alert(1);
+			$.ajax({
+				url:"User222",	// 指定请求URL
+				type:"get",		// 指定请求方式	
+				data:{			// 请求附带的参数
+					password0:$("#password0").val(),
+					id:$("#id").val()
+				},
+				success:function(data){	// 成功后的回调函数      data代表服务器响应的数据
+					//alert(data);
+					if (data=="false") {
+						$("#i0").text("原密码不正确,请重新输入");
+						i=false; 
+					}else{
+						$("#i0").text("密码正确,请输入新密码");
+						i=true; 
+					}
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown){// 失败回调的函数
+					alert(textStatus);	
+				}
+			})
+		}	
+</script>   
     
 
  

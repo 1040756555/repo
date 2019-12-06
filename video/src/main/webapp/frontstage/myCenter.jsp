@@ -33,9 +33,9 @@
 	<menu>
 	  <div class="container clearfix">
 			<ul class="clearfix f_left">
-				<li><a>首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/index2.jsp">首页</a></li>
 				
-				<li class="menu_active"><a>个人中心</a></li>
+				<li class="menu_active"><a href="${pageContext.request.contextPath}/frontstage/myCenter.jsp">个人中心</a></li>
 			</ul>
 			
 			<div id="user_bar">
@@ -64,15 +64,15 @@
                     
                     <div class="proflle_tab_workplace clearfix">
                           <div class="profile_avatar_area">                         
-		                         <img id="avatar" width="200px;" src="${pageContext.request.contextPath}/videoimg/29.jpg" alt="">
+		                         <img id="avatar" width="200px;" src="${user.imgurl}" alt="">
                             <p> 欢迎回来！</p>
                           </div>
                      <ul class="profile_ifo_area">
-                            <li><span class="dd">昵　称：</span><input type="text" id="nickname" name="nickname" value="" placeholder="请输入用户名"></li>   
-                            <li><span class="dd">性　别：</span><input type="text" id="sex" name="sex" value="" placeholder="请输入性别"></li>
-                            <li><span class="dd">生　日：</span><input type="text" id="birthday" name=""birthday"" value="" placeholder="请输入生日"></li>
-                            <li><span class="dd">邮　箱：</span><input type="text" id="email" name="email" value="" placeholder="请输入邮箱"></li>
-                            <li><span class="dd">所在地：</span><input type="text" id="address" name="address" value="" placeholder="请输入所在地"></li> 
+                            <li><span class="dd">昵　称：${user.nickname} </span></li>   
+                            <li><span class="dd">性　别：${user.sex}      </span></li>
+                            <li><span class="dd">生　日：${user.birthday} </span></li>
+                            <li><span class="dd">邮　箱：${user.accounts} </span></li>
+                            <li><span class="dd">所在地：${user.address}  </span></li> 
                             <li><input type="submit" value="保      存"></li>                         
                      </ul>
                     </div>
