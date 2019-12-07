@@ -21,12 +21,73 @@
     <result column="speaker_job" property="speaker_job"/>
     <result column="pic_url" property="pic_url"/>
   </resultMap>
+  <resultMap type="course" id="courseMap">
+    <id column="id" property="id"/>
+    <result column="course_title" property="course_title"/>
+    <result column="course_desc" property="course_desc"/>
+    <result column="subject_id" property="subject_id"/>
+  </resultMap>
   <!-- 查询全部的 speaker-->
   <select id="selectAllSpeaker" resultType="speaker">
     select * from speaker;
   </select>
+  <!-- 查询全部的 course-->
+  <select id="selectAllCourse" resultType="course">
+    select * from course;
+  </select>
   <!-- 查询全部的 video-->
   <select id="selectAllVideo" resultType="video">
-    select * from video;
+    select * from video limit #{0},#{1};
   </select>
+  <!-- 查询全部的 video总条数-->
+  <select id="selectVideoCounts" resultType="int">
+    select count(*) from video;
+  </select>
+  <!-- 添加新的video -->
+  <insert id="addVideo" parameterType="video">
+    insert into video values(#{video_id},#{title},#{detail},#{time},#{speaker_id},#{course_id},#{video_url},#{image_url},#{play_num});
+  </insert>
+  <!-- 删除单个video -->
+  <delete id="deleteVideoById">
+  	delete from video where video_id=#{123};
+  </delete>
+  <!-- 查询单个video -->
+  <select id="selectVideoById" resultMap="videoMap">
+  	select * from video where video_id=#{123};
+  </select>
+  <!-- 批量删除 -->
+  <delete id="deleteAllVideo" parameterType="list">
+    delete from video where video_id in 
+      <foreach collection="list" item="id" open="(" separator="," close=")">
+        #{id}
+      </foreach>
+  </delete>
+  <!-- 更新video -->
+  <update id="updateVideo" parameterType="video">
+   update video
+      <set>
+        <if test="title!=null">
+          title=#{title},
+        </if>
+        <if test="detail!=null">
+          detail=#{detail},
+        </if>
+        <if test="time!=0">
+          time=#{time},
+        </if>       
+        <if test="speaker_id!=0">
+          speaker_id=#{speaker_id},
+        </if>       
+        <if test="course_id!=0">
+          course_id=#{course_id},
+        </if>       
+        <if test="video_url!=null">
+          video_url=#{video_url},
+        </if>       
+        <if test="image_url!=null">
+          image_url=#{image_url}
+        </if>       
+      </set>
+    where video_id=#{video_id}
+  </update>
 </mapper>

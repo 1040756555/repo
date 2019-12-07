@@ -37,12 +37,12 @@ b {
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-9">
 			<ul class="nav navbar-nav">
-				<li><a>视频管理</a></li>
-				<li class="active"><a>主讲人管理</a></li>
+				<li class="active"><a>视频管理</a></li>
+				<li><a href="speakerShow">主讲人管理</a></li>
 				<li><a href="showCourse">课程管理</a></li>
 			</ul>
 			<p class="navbar-text navbar-right">
-				<span>admin</span> <i class="glyphicon glyphicon-log-in"
+				<span>${admin.accounts }</span> <i class="glyphicon glyphicon-log-in"
 					aria-hidden="true"></i>&nbsp;&nbsp;<a class="navbar-link">退出</a>
 			</p>
 		</div>
@@ -50,38 +50,61 @@ b {
 	</nav>
 	<div class="jumbotron" style="padding-top: 15px; padding-bottom: 15px;">
 		<div class="container">
-			<h2>添加主讲人</h2>
+			<h2>添加视频</h2>
 		</div>
 	</div>
 	<div class="container" style="margin-top: 20px;">
-		<form id="infoForm" class="form-horizontal" method="post" action="${pageContext.request.contextPath}/addSpeaker">
+		<form id="infoForm" class="form-horizontal" method="post" action="addVideo.do">
 		<div class="form-group">
-				<label for="speaker_name" class="col-sm-2 control-label">姓名</label>
+				<label for="title" class="col-sm-2 control-label">视频标题</label>
 				<div class="col-sm-10">
-					<input class="form-control" name="speaker_name" id="speaker_name" placeholder="姓名" type="text">
+					<input class="form-control" name="title" id="title" placeholder="视频标题" type="text">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="speaker_job" class="col-sm-2 control-label">职位</label>
+				<label for="speaker_id" class="col-sm-2 control-label">主讲人</label>
 				<div class="col-sm-10">
-					<select name="speaker_job" id="speaker_job" class="form-control">
-						<option value="初级讲师" selected="selected">初级讲师</option>
-						<option value="中级讲师">中级讲师</option>
-						<option value="高级讲师">高级讲师</option>
-						<option value="特级讲师">特级讲师</option>
+					<select name="speaker_id" id="speaker_id" class="form-control">
+						<option value="0" selected="selected">--请选择主讲人--</option>
+						<c:forEach items="${speakerList }" var="i">
+						  <option value="${i.id }">${i.speaker_name }</option>
+						</c:forEach>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="course_title" class="col-sm-2 control-label">头像地址</label>
+				<label for="course_id" class="col-sm-2 control-label">所属课程</label>
 				<div class="col-sm-10">
-					<input class="form-control" name="pic_url" id="pic_url" placeholder="头像地址" type="text">
+					<select name="course_id" id="course_id" class="form-control">
+						<option value="0" selected="selected">--请选择所属课程--</option>
+						<c:forEach items="${courseList }" var="i">
+						  <option value="${i.id }">${i.course_title }</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="speaker_desc" class="col-sm-2 control-label">简介</label>
+				<label for="time" class="col-sm-2 control-label">视频时长(秒)</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" id="speaker_desc" name="speaker_desc" rows="3"></textarea>
+					<input class="form-control" name="time" id="time" placeholder="视频时长(秒)" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="image_url" class="col-sm-2 control-label">封面图片地址</label>
+				<div class="col-sm-10">
+					<input class="form-control" name="image_url" id="image_url" placeholder="封面图片地址" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="video_url" class="col-sm-2 control-label">视频播放地址</label>
+				<div class="col-sm-10">
+					<input class="form-control" name="video_url" id="video_url" placeholder="视频播放地址* type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="detail" class="col-sm-2 control-label">备注</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="detail" name="detail" rows="3"></textarea>
 				</div>
 			</div>
 			<div class="form-group">

@@ -42,7 +42,6 @@ public class CourseServiceImpl implements CourseService {
 			try {
 				resp.getWriter().write("success");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

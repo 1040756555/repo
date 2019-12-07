@@ -88,7 +88,6 @@ public class CourseController {
 	public void deleteAll(@RequestParam("checkboxs[]") Integer checkboxs[], HttpServletResponse resp)
 			throws UnsupportedEncodingException {
 		List<Integer> list = Arrays.asList(checkboxs);
-
 		service.deleteAll(list, resp);
 	}
 }

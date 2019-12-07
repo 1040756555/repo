@@ -62,7 +62,7 @@ th {
 			<table class="table table-bordered table-hover" style="text-align: center; table-layout: fixed;">
 				<thead>
 					<tr class="active">
-						<th><input type="checkbox" id="all"></th>
+						<th><input type="checkbox" onclick="a()" id="all"></th>
 						<th>序号</th>
 						<th style="width: 16%">标题</th>
 						<th style="width: 60%">简介</th>
@@ -104,6 +104,13 @@ th {
 	<script type="text/javascript">
 		function showAddPage(){
 			location.href="addCourse";
+		}
+		function a() {
+			var stuts=document.getElementById("all").checked;
+			var checkboxs=document.getElementsByName("checkbox");
+				for (var i = 0; i < checkboxs.length; i++) {
+					checkboxs[i].checked=stuts;
+				}	
 		}
 		function deleteAll(){
 			var checkbox=$("input[name='checkbox']:checked").length;

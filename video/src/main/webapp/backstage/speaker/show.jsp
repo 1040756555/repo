@@ -34,7 +34,7 @@ th {
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-9">
 			<ul class="nav navbar-nav">
-				<li><a>视频管理</a></li>
+				<li><a href="videoShow">视频管理</a></li>
 				<li class="active"><a>主讲人管理</a></li>
 				<li><a href="showCourse">课程管理</a></li>
 			</ul>
@@ -62,7 +62,7 @@ th {
 			<table class="table table-bordered table-hover" style="text-align: center; table-layout: fixed;">
 				<thead>
 					<tr class="active">
-						<th><input type="checkbox" id="all"></th>
+						<th><input type="checkbox" onclick="a()" id="all"></th>
 						<th>序号</th>
 						<th>讲师姓名</th>
 						<th style="width: 12%">职位</th>
@@ -106,6 +106,13 @@ th {
 	<script type="text/javascript">
 		function showAddPage(){
 			location.href="backstage/speaker/add.jsp";
+		}
+		function a() {
+			var stuts=document.getElementById("all").checked;
+			var checkboxs=document.getElementsByName("checkbox");
+				for (var i = 0; i < checkboxs.length; i++) {
+					checkboxs[i].checked=stuts;
+				}	
 		}
 		function deleteAll(){
 			var checkbox=$("input[name='checkbox']:checked").length;
