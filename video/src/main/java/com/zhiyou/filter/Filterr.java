@@ -8,20 +8,18 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet Filter implementation class filter
+ * Servlet Filter implementation class Filterr
  */
-@WebFilter("/filter")
-public class filter implements Filter {
+public class Filterr implements Filter {
 
 	/**
 	 * Default constructor. 
 	 */
-	public filter() {
+	public Filterr() {
 		// TODO Auto-generated constructor stub
 	}
 

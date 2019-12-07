@@ -2,6 +2,8 @@ package com.zhiyou.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.zhiyou.model.Course;
 import com.zhiyou.model.Subject;
 
@@ -15,7 +17,7 @@ public interface CourseService {
 
 	void updateCourse(Course course);
 
-	void deleteAll(int[] ids);
+	void deleteAll(List<Integer> list, HttpServletResponse resp);
 
 	// 查询单个Course
 	Course selectById(int id);
@@ -25,4 +27,5 @@ public interface CourseService {
 
 	// 删除单条
 	void deleteById(int id);
+
 }

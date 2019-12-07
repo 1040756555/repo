@@ -34,9 +34,9 @@ th {
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-9">
 			<ul class="nav navbar-nav">
-				<li><a href="videoShow">视频管理</a></li>
-				<li><a href="speakerShow">主讲人管理</a></li>
-				<li class="active"><a>课程管理</a></li>
+				<li><a>视频管理</a></li>
+				<li class="active"><a>主讲人管理</a></li>
+				<li><a href="showCourse">课程管理</a></li>
 			</ul>
 			<p class="navbar-text navbar-right">
 				<span>${admin.accounts }</span> <i class="glyphicon glyphicon-log-in"
@@ -48,7 +48,7 @@ th {
 	<!-- /.container-fluid --> </nav>
 	<div class="jumbotron" style="padding-top: 15px; padding-bottom: 15px;">
 		<div class="container">
-			<h2>课程管理</h2>
+			<h2>主讲人管理</h2>
 		</div>
 	</div>
 		<div class="container">
@@ -64,21 +64,31 @@ th {
 					<tr class="active">
 						<th><input type="checkbox" id="all"></th>
 						<th>序号</th>
-						<th style="width: 16%">标题</th>
-						<th style="width: 60%">简介</th>
+						<th style="width: 12%">名称</th>
+						<th style="width: 45%">介绍</th>
+						<th>讲师</th>
+						<th>时长</th>
+						<th>播放次数</th>
 						<th>编辑</th>
 						<th>删除</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list }" var="i">
+					<c:forEach items="${videoList }" var="i">
 					<tr>
-						<td><input type="checkbox" name="checkbox" id="checkbox" value="${i.id }"></td>
-						<td>${i.id }</td>
-						<td>${i.course_title}</td>
-						<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${i.course_desc }</td>
-						<td><a href="updateCourse?id=${i.id }">✎</a></td>
-						<td><a onclick="delCourseById(${i.id })">X</a></td>
+						<td><input type="checkbox" name="checkbox" id="checkbox" value="${i.video_id }"></td>
+						<td>${i.video_id }</td>
+						<td>${i.title }</td>
+						<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${i.detail }</td>
+						<td>
+							<c:forEach items="${speakerList }" var="j">
+							  <c:if test="${j.id==i.speaker_id }">${j.speaker_name }</c:if>
+							</c:forEach>
+						</td>
+						<td>${i.time}</td>
+						<td>${i.play_num}</td>
+						<td><a href="updateSpeaker?id=${i.video_id }">✎</a></td>
+						<td><a onclick="delCourseById(${i.video_id })">X</a></td>
 					</tr>
 					</c:forEach>
 
@@ -94,7 +104,7 @@ th {
 							<fmt:parseNumber var="page" value="${page}" integerOnly="true" />
 							<font>总共${counts }条,当前第${page}页</font> 
 							<c:forEach var="i" begin="1" end="${page}">
-								<a href="showCourse?page=${i}">${i}</a>&gt;
+								<a href="speakerShow?page=${i}">${i}</a>&gt;
 							</c:forEach>
 						</td>
 					</tr>
@@ -103,7 +113,7 @@ th {
 		</div>
 	<script type="text/javascript">
 		function showAddPage(){
-			location.href="addCourse";
+			location.href="backstage/speaker/add.jsp";
 		}
 		function deleteAll(){
 			var checkbox=$("input[name='checkbox']:checked").length;
@@ -112,7 +122,7 @@ th {
 				checkboxs.push($(this).val());
 			});
 			if(confirm("确定删除所选项？")){
-                $.post("deleteAll",{checkboxs:checkboxs},
+                $.post("deleteAllSpeaker",{checkboxs:checkboxs},
                    function(data){
  					if(data=='success'){
  						Confirm.show('温馨提示：', '删除成功');
@@ -124,7 +134,7 @@ th {
            	}
 		}
 		function delCourseById(id){
-			location.href="deleteById?id="+id;
+			location.href="deleteSpeakerById?id="+id;
 		}
 	</script>
 	<div id="modal-background" class=""></div>

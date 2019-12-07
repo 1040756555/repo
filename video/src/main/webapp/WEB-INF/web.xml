@@ -18,13 +18,16 @@
     <servlet-name>video</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <!-- <filter>
-    <display-name>Filter</display-name>
-    <filter-name>Filter</filter-name>
-    <filter-class>com.zhiyou.filter.Filter</filter-class>
+
+ 
+  <filter>
+    <display-name>Filterr</display-name>
+    <filter-name>Filterr</filter-name>
+    <filter-class>com.zhiyou.filter.Filterr</filter-class>
+
   </filter>
   <filter-mapping>
-    <filter-name>Filter</filter-name>
+    <filter-name>Filterr</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping> -->
+  </filter-mapping>
 </web-app>
