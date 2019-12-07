@@ -25,9 +25,9 @@
 	<div class="container">
 		<span>欢迎来到IT培训的黄埔军校——智游教育！</span>
 		
-			<div id="userBlock" style="float:right">				
-				<a id="login_open">登录 </a>
+			<div id="userBlock" style="float:right"> 
 				<a id="reg_open">注册</a>
+				<a id="login_open">登陆</a>
 			</div>
 		
 		<a onclick="JavaScript:addFavorite2()">
@@ -205,7 +205,7 @@
 					
 				</div>
 				<input value="登　录" type="submit">
-				<input onclick="return commitLogin()" value="注  册" type="submit" id="reg_open">
+				<input value="注  册" type="submit" id="reg_open">
 			</form>
 		</div>
 		<div class="mask_content_footer">
@@ -221,14 +221,14 @@
 		<div class="mask_content_body">
 			<form id="regForm" action="signin">
 				<h3>新用户注册</h3>
-				<input id="regEmail" placeholder="请输入邮箱" name="email" type="email"><span id="emailMsg"></span>
+				<input id="regEmail" placeholder="请输入邮箱" name="accounts" type="email"><span id="emailMsg"></span>
 				<input id="regPsw" placeholder="请输入密码" name="password" type="password">
 				<input id="regPswAgain" placeholder="请再次输入密码" name="psw_again" type="password"><span id="passMsg"></span>
 				<div id="yzm" class="form-inline">
 					<input name="yzm" style="width: 45%; display: inline-block;" type="text">
 					<div id="v_container" style="width: 45%;height: 40px;float:right;"><canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas><canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas></div>
 				</div>
-				<input onclick="return commitRegForm();" value="注　册" type="submit">
+				<input value="注　册" type="submit">
 			</form>
 		</div>
 		<div class="mask_content_footer">

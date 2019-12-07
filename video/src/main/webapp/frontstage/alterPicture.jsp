@@ -35,9 +35,9 @@
 	<menu>
 		<div class="container clearfix">
 			<ul class="clearfix f_left">
-				<li><a >首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/index2.jsp">首页</a></li>
 				
-				<li class="menu_active"><a>个人中心</a></li>
+				<li class="menu_active"><a href="${pageContext.request.contextPath}/frontstage/myCenter.jsp">个人中心</a></li>
 			</ul>
 			
 			<div id="user_bar">
@@ -61,11 +61,11 @@
             <div id="profile_tab">
                 <ul class="profile_tab_header f_left clearfix">
                      <ul class="profile_tab_header f_left clearfix">
-                    <li><a>更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterData.jsp">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a>更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterPicture.jsp">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a>密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath}/frontstage/alterPassword.jsp">密码安全</a></li>
                 </ul>
                 </ul>
                 <div class="proflle_tab_body">
@@ -81,7 +81,7 @@
                             <p style="text-align: center;">当前头像</p>
                         </div>
                         <div class="profile_ifo_area">
-                            <form id="upload_form" action="#">
+                            <form id="upload_form" action="uploadhead" method="post" enctype="multipart/form-data">
                                 <!-- hidden crop params -->
                               
 
@@ -120,7 +120,7 @@
 
 
 <script src="${pageContext.request.contextPath}/js/jquery-1.js."></script>
-<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <script src="${pageContext.request.contextPath}/js/confirm.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/js/message_cn.js"></script>

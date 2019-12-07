@@ -18,7 +18,7 @@
     <servlet-name>video</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <filter>
+  <!-- <filter>
     <display-name>Filter</display-name>
     <filter-name>Filter</filter-name>
     <filter-class>com.zhiyou.filter.Filter</filter-class>
@@ -26,5 +26,5 @@
   <filter-mapping>
     <filter-name>Filter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
 </web-app>

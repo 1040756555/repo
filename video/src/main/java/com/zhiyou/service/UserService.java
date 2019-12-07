@@ -2,6 +2,8 @@ package com.zhiyou.service;
 
 
 
+import java.util.List;
+
 import com.zhiyou.model.User;
 
 public interface UserService {
@@ -22,7 +24,7 @@ public interface UserService {
 //		
 //		//这是批量删除
 //		void deleteAll(int [] ids);
-	// 用户登陆
+	    // 用户登陆
 		User selectByEmail(String accounts);
 		// 用户注册
 		void add(User user);
@@ -32,4 +34,6 @@ public interface UserService {
 		void update(User user);
 		// 查询原密码是否正确
 	    boolean selectByPassword(int id, String password);
+	 // 查询用户
+		public User selectById(int id);
 }

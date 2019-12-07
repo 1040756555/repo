@@ -27,7 +27,7 @@
 		
 			<div id="userBlock" style="float:right">
 				<a href="${pageContext.request.contextPath}/index.jsp">退出</a>
-				<a href="${pageContext.request.contextPath}/frontstage/myCenter.jsp">个人中心</a>
+				<a href="${pageContext.request.contextPath}/selectById?id=${user.id}">个人中心 : ${user.accounts}</a>
 			</div>
 		
 		<a onclick="JavaScript:addFavorite2()">

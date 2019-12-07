@@ -13,8 +13,8 @@ public interface UserMapper{
 //	void update(User user);
 //	void delete(int id);
 //	
-//	//查询全部
-//	List<User> selectAll();
+	//查询全部
+	//List<User> selectAll(int number, int page);
 //	
 //	//仅用于登录
 //	User selectByLogin(String accounts,String password);
@@ -27,6 +27,9 @@ public interface UserMapper{
 		void add(User user);
 		// 修改数据      // 修改密码
 		void update(User user);
-	// 查询原密码是否正确
-    List<User> selectByPassword(int id, String password);
+	   // 查询原密码是否正确
+         List<User> selectByPassword(int id, String password);
+      // 查询用户
+     	public User selectById(int id);
+         
 }

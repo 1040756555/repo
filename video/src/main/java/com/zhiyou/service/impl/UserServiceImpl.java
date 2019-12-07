@@ -50,6 +50,14 @@ public class UserServiceImpl implements UserService{
 					return true;
 				}
 			}
+
+		@Override
+		public User selectById(int id) {
+			// TODO Auto-generated method stub
+			return mapper.selectById(id);
+		}
+		
+		
 //	@Override
 //	public void add(User user) {
 //		// TODO Auto-generated method stub
@@ -85,6 +93,8 @@ public class UserServiceImpl implements UserService{
 //		// TODO Auto-generated method stub
 //		mapper.deleteAll(ids);
 //	}
+
+	
 	
 	}
 

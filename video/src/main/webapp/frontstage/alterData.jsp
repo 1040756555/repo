@@ -57,7 +57,7 @@
                     <li><a href="${pageContext.request.contextPath}/frontstage/alterPassword.jsp">密码安全</a></li>
                 </ul>
                 <div class="profile_ifo_area">
-                            <form action="updatedata">
+                            <form action="${pageContext.request.contextPath}/updatedata?id=${user.id}">
                                 <input name="id" value="${user.id}" type="hidden">
                                 <div class="form_group">
                                     <span class="dd">昵　称：</span><input name="nickname" type="text" value="${user.nickname}">
@@ -88,7 +88,7 @@
                                     <input name="address" id="address" type="hidden">
                                 </div>
                                 <div class="form_submit dd">
-                                    <input onclick="return commitForm();" value="保　存" type="submit">
+                                    <input value="保　存" type="submit">
                                     <a href="${pageContext.request.contextPath}/frontstage/alterData.jsp ">重置</a>
                                 </div>
                                 
