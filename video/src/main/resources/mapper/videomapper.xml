@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyou.mapper.VideoMapper">
+  <resultMap type="video" id="videoMap">
+    <id column="video_id" property="video_id"/>
+    <result column="title" property="title"/>
+    <result column="speaker_id" property="speaker_id"/>
+    <result column="detail" property="detail"/>
+    <result column="time" property="time"/>
+    <result column="course_id" property="course_id"/>
+    <result column="video_url" property="video_url"/>
+    <result column="image_url" property="image_url"/>
+    <result column="play_num" property="play_num"/>
+  </resultMap>
+  <resultMap type="speaker" id="speakerMap">
+    <id column="id" property="id"/>
+    <result column="speaker_name" property="speaker_name"/>
+    <result column="speaker_desc" property="speaker_desc"/>
+    <result column="speaker_job" property="speaker_job"/>
+    <result column="pic_url" property="pic_url"/>
+  </resultMap>
+  <!-- 查询全部的 speaker-->
+  <select id="selectAllSpeaker" resultType="speaker">
+    select * from speaker;
+  </select>
+  <!-- 查询全部的 video-->
+  <select id="selectAllVideo" resultType="video">
+    select * from video;
+  </select>
+</mapper>

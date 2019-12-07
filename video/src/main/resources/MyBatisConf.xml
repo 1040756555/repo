@@ -9,5 +9,7 @@
 		<typeAlias type="com.zhiyou.model.Subject" alias="subject"/>
 		<typeAlias type="com.zhiyou.model.Emp" alias="emp"/>
 		<typeAlias type="com.zhiyou.model.User" alias="user"/>
+		<typeAlias type="com.zhiyou.model.Speaker" alias="speaker"/>
+		<typeAlias type="com.zhiyou.model.Video" alias="video"/>
 	</typeAliases>
 </configuration>

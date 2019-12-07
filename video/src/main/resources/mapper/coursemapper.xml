@@ -39,9 +39,9 @@
   </insert>
   
   <!-- 删除的全部 -->
-  <delete id="deleteAll">
+  <delete id="deleteAll" parameterType="list">
     delete from course where id in
-			<foreach open="(" collection="array" item="id" index="i" separator="," close=")">
+			<foreach collection="list" item="id" open="(" separator="," close=")">
 				#{id}	
 			</foreach>
   </delete>

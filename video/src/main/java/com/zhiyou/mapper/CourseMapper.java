@@ -2,6 +2,10 @@ package com.zhiyou.mapper;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.zhiyou.model.Course;
 import com.zhiyou.model.Subject;
 
@@ -18,7 +22,7 @@ public interface CourseMapper {
 	// 查询单个Course
 	Course selectById(int id);
 
-	void deleteAll(int[] ids);
+	int deleteAll(@Param("list") List<Integer> list, HttpServletResponse resp);
 
 	// 查询视频总条数
 	int selectCourseCounts();

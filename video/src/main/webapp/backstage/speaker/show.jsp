@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0052)http://localhost:8080/Voids/controller/courseShow.do -->
 <html>
@@ -47,10 +48,9 @@ th {
 	<!-- /.container-fluid --> </nav>
 	<div class="jumbotron" style="padding-top: 15px; padding-bottom: 15px;">
 		<div class="container">
-			<h2>课程管理</h2>
+			<h2>主讲人管理</h2>
 		</div>
 	</div>
-	<form action="http://localhost:8080/Voids/Course/deleteall.do">
 		<div class="container">
 			<button onclick="showAddPage()" type="button"
 				class="btn btn-info dropdown-toggle" data-toggle="dropdown"
@@ -64,8 +64,9 @@ th {
 					<tr class="active">
 						<th><input type="checkbox" id="all"></th>
 						<th>序号</th>
-						<th style="width: 16%">标题</th>
-						<th style="width: 60%">简介</th>
+						<th>讲师姓名</th>
+						<th style="width: 12%">职位</th>
+						<th style="width: 45%">简介</th>
 						<th>编辑</th>
 						<th>删除</th>
 					</tr>
@@ -73,11 +74,12 @@ th {
 				<tbody>
 					<c:forEach items="${list }" var="i">
 					<tr>
-						<td><input type="checkbox" name="checkbox" value="${i.id }"></td>
+						<td><input type="checkbox" name="checkbox" id="checkbox" value="${i.id }"></td>
 						<td>${i.id }</td>
-						<td>${i.course_title}</td>
-						<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${i.course_desc }</td>
-						<td><a href="updateCourse?id=${i.id }&course=${course}">✎</a></td>
+						<td>${i.speaker_name }</td>
+						<td>${i.speaker_job}</td>
+						<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${i.speaker_desc }</td>
+						<td><a href="updateSpeaker?id=${i.id }">✎</a></td>
 						<td><a onclick="delCourseById(${i.id })">X</a></td>
 					</tr>
 					</c:forEach>
@@ -94,23 +96,37 @@ th {
 							<fmt:parseNumber var="page" value="${page}" integerOnly="true" />
 							<font>总共${counts }条,当前第${page}页</font> 
 							<c:forEach var="i" begin="1" end="${page}">
-								<a href="showCourse?page=${i}">${i}</a>&gt;
+								<a href="speakerShow?page=${i}">${i}</a>&gt;
 							</c:forEach>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</form>
 	<script type="text/javascript">
 		function showAddPage(){
-			location.href="addCourse";
+			location.href="backstage/speaker/add.jsp";
 		}
 		function deleteAll(){
-			location.href="deleteAll";
+			var checkbox=$("input[name='checkbox']:checked").length;
+			var checkboxs = new Array();
+			$("input[name='checkbox']:checked").each(function(){
+				checkboxs.push($(this).val());
+			});
+			if(confirm("确定删除所选项？")){
+                $.post("deleteAllSpeaker",{checkboxs:checkboxs},
+                   function(data){
+ 					if(data=='success'){
+ 						Confirm.show('温馨提示：', '删除成功');
+ 						document.location.reload();
+ 					}else{
+ 						Confirm.show('温馨提示：', '操作失败');
+ 					}
+                	 });
+           	}
 		}
 		function delCourseById(id){
-			location.href="deleteById?id="+id;
+			location.href="deleteSpeakerById?id="+id;
 		}
 	</script>
 	<div id="modal-background" class=""></div>
